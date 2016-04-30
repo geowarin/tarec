@@ -29,6 +29,7 @@
     "html-webpack-plugin": "^2.16.0",
     "http-proxy-middleware": "^0.14.0",
     "json-loader": "^0.5.4",
+    "optimist": "^0.6.1",
     "require-dir": "^0.3.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.6",

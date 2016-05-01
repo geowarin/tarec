@@ -12,6 +12,8 @@ Tarec takes all the best practices in the React community and makes them availab
 * Pre-configured loaders for all resources (images, fonts, json, ...)
 * Separate bundles for vendors and application
 * Cache-busting
+* Static resources
+* Index.html fallback (for the router)
 
 ## How-to
 
@@ -25,12 +27,16 @@ Tarec takes all the best practices in the React community and makes them availab
 Type `tarec` to get a dev-server with hot-reload and `tarec build` to generate the optimized version of your application
 in the `dist` folder.
 
+## Static resources
+
+All the files in the `public` directory of your project will be served by the dev server and will be copied
+as-is int the `dist` directory.
+
 ## Todo
 
 * Babel aliases
 * Starter project generation
 * Plugins
-* Static resources
 * Configuration file and command-line switches
 * Easy publishing on github pages
 * React-Hot-Loader 3?

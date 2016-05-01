@@ -1,12 +1,12 @@
 {
-  "name": "react-cli",
+  "name": "tarec",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Awesome REact Cli",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "react": "lib/bin/react.js"
+    "tarec": "lib/bin/tarec.js"
   },
   "keywords": [],
   "author": "",

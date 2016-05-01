@@ -14,6 +14,7 @@ Tarec takes all the best practices in the React community and makes them availab
 * Cache-busting
 * Static resources
 * Index.html fallback (for the router)
+* Simple babel aliases configuration
 
 ## How-to
 
@@ -27,14 +28,27 @@ Tarec takes all the best practices in the React community and makes them availab
 Type `tarec` to get a dev-server with hot-reload and `tarec build` to generate the optimized version of your application
 in the `dist` folder.
 
-## Static resources
+## Configuration
+
+### Static resources
 
 All the files in the `public` directory of your project will be served by the dev server and will be copied
 as-is int the `dist` directory.
 
+### Babel aliases
+
+Create a `tarec.yml` file and configure aliases like this:
+
+```yaml
+
+aliases:
+  - components: ./src/components
+  - reducers: ./src/reducers
+
+```
+
 ## Todo
 
-* Babel aliases
 * Starter project generation
 * Plugins
 * Configuration file and command-line switches

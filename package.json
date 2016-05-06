@@ -1,6 +1,6 @@
 {
   "name": "tarec",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "The Awesome REact Cli",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

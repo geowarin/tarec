@@ -2,19 +2,22 @@
   "name": "{{projectName}}",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "scripts": {
     "start": "tarec start",
     "build": "tarec build",
-    "test": "tarec mochaTest"
+    "test": "tarec mochaTest",
+    "publish": "npm run build && gh-pages-deploy"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
+    "gh-pages-deploy": "^0.4.2",
     "tarec-plugin-mocha-test": "geowarin/tarec-plugin-mocha-test",
     "tarec-plugin-sass": "geowarin/tarec-plugin-sass"
   }

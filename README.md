@@ -17,6 +17,7 @@ Tarec takes all the best practices in the React community and makes them availab
 * Index.html fallback (for the router)
 * Simple babel aliases configuration
 * Simple plugins system to add support for sass or mocha
+* Publish on github pages
 
 ## How-to
 
@@ -79,5 +80,4 @@ plugins:
 ## Todo
 
 * Configuration file and command-line switches
-* Easy publishing on github pages
 * React-Hot-Loader 3?

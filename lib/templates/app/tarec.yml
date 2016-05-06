@@ -1,0 +1,7 @@
+
+aliases:
+  - compo: ./src/components
+
+plugins:
+  - tarec-plugin-mocha-test
+  - tarec-plugin-sass

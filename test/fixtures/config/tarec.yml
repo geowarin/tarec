@@ -1,0 +1,6 @@
+aliases:
+  - compo: ./src/components
+  - app: ../app/dir/app
+
+proxies:
+  - /api: http://localhost:8080

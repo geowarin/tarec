@@ -49,6 +49,21 @@ aliases:
 
 ```
 
+### Proxies
+
+If you are targeting an api running on a different port or another host, it can be useful to create a proxy in development.
+
+You can add as many proxies as you want in your `tarec.yml` file:
+
+```yaml
+
+proxies:
+  - /api: http://localhost:8080
+
+```
+
+The above configuration will redirect every request made to `${yourServerUrl}/api` to `http://localhost:8080/api`
+
 ### Plugins
 
 Tarec has a powerful, yet simple plugin system.

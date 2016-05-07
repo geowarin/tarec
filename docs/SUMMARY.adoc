@@ -1,0 +1,6 @@
+= Summary
+
+. link:plugins/README.adoc[Plugins]
+.. link:plugins/INTRO.adoc[Introduction]
+.. link:plugins/COOKBOOK.adoc[Making plugins]
+. Unfinished Chapter

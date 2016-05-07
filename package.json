@@ -3,7 +3,11 @@
   "version": "1.0.0-beta.5",
   "description": "The Awesome REact Cli",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "docs": "npm run docs:build",
+    "docs:pre": "gitbook install",
+    "docs:build": "gitbook build -g geowarin/tarec",
+    "docs:publish": "gh-pages -d _book"
   },
   "bin": {
     "tarec": "lib/bin/tarec.js"
@@ -49,6 +53,8 @@
   },
   "devDependencies": {
     "expect": "^1.19.0",
+    "gh-pages": "^0.11.0",
+    "gitbook-cli": "^2.1.3",
     "mocha": "^2.4.5"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "gitbook": "3.0.0-pre.13",
+  "root": "./docs",
+  "plugins": [
+    "edit-link",
+    "prism",
+    "-highlight",
+    "github",
+    "anchors",
+    "collapsible-menu"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/geowarin/tarec/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/geowarin/tarec/"
+    }
+  }
+}

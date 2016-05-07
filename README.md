@@ -19,6 +19,10 @@ Tarec takes all the best practices in the React community and makes them availab
 * Simple plugins system to add support for sass or mocha
 * Publish on github pages
 
+## Documentation
+
+Read [the documentation](http://geowarin.github.io/tarec/)
+
 ## How-to
 
 1. `npm install -g tarec`

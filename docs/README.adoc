@@ -1,3 +1,21 @@
-# Tarec
+= The Awesome REact CLI
 
-Intro
+Tarec takes care of your React build for you. No more googling and stitching boilerplates together.
+Just write your application.
+
+== Features
+
+Tarec takes all the best practices in the React community and makes them available to you via a Command-Line Interface (CLI).
+
+* Instant project generation
+* Babel 6 stage 0
+* Tree-shaking with webpack 2
+* Hot reloading with react-hmr
+* Pre-configured loaders for all resources (images, fonts, json, ...)
+* Separate bundles for vendors and your code (css and js)
+* Cache-busting
+* Static resources
+* Index.html fallback (for the router)
+* Simple babel aliases configuration
+* Simple plugins system to add support for sass or mocha
+* Publish on github pages

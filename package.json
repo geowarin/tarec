@@ -1,6 +1,6 @@
 {
   "name": "tarec",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "The Awesome REact Cli",
   "scripts": {
     "test": "mocha",

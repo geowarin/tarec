@@ -7,6 +7,8 @@
     "start": "tarec start",
     "build": "tarec build",
     "test": "tarec mochaTest",
+    "test:coverage": "tarec mochaTest --coverage",
+    "report": "tarec mochaTestReport -o",
     "publish": "npm run build && gh-pages -d dist"
   },
   "keywords": [],
@@ -18,7 +20,7 @@
   },
   "devDependencies": {
     "gh-pages": "^0.11.0",
-    "tarec-plugin-mocha-test": "geowarin/tarec-plugin-mocha-test",
+    "tarec-plugin-mocha-test": "1.0.0",
     "tarec-plugin-sass": "geowarin/tarec-plugin-sass"
   }
 }

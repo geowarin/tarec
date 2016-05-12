@@ -18,6 +18,7 @@
   "dependencies": {
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
+    "babel-plugin-glob-imports": "^1.0.0-beta.1",
     "babel-plugin-module-alias": "^1.4.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",

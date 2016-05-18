@@ -1,0 +1,42 @@
+= Principle
+
+Tarec manages webpack's configuration as well as babel's.
+
+Tarec aims to provide 95% of what all React project need out-of-the-box and allows plugins
+to provide the remaining 5%.
+
+Typically, the test frameworks and css pre-processors will be available via plugins whereas
+transpiling and inclusion of various assets (images, json, css) will be available right away.
+
+Tarec uses Webpack 2, which is still in beta but seems stable enough.
+You might get some npm peer dependencies warning, though.
+
+Webpack 2 understands ES6 modules natively, which enables
+http://www.2ality.com/2015/12/webpack-tree-shaking.html[tree shaking].
+
+Tarec has three main commands:
+
+* `tarec init`, which will scaffold a basic application in the current directory
+* `tarec build`, which will build your application by collecting all assets imported in your project (js, css, images, etc.),
+compress them and put them in the `dist` directory
+* `tarec start`, which will start a development server with hot reloading via https://github.com/gaearon/react-transform-hmr[react-hmr]
+
+Plugins can contribute by either hooking into existing commands or by providing new ones.
+
+The development server is powered by express and allows you to serve your project's code and its assets.
+It also supports index.html fallback (all non resources request will redirect to the index.html file)
+
+== Conventions
+
+Your entry point is in `src/index.js`.
+All your `.js` and `.jsx` files will be transpiled with babel stage 0 and babel react.
+
+If you don't provide an index.html file at the root of your project, one will be generated for you.
+It conveniently contains a `div` with the id `app` to allow
+
+Static assets are found in the `public` directory.
+Those assets will be served and copied as-is by the `start` and `build` tasks respectively
+
+== Configuration
+
+You can configure a few things by creating link:Conguration.adoc[a tarec.yml file] at the root of your project.

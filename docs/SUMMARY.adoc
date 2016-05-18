@@ -1,6 +1,6 @@
 = Summary
 
+. link:tarec/Principle.adoc[Principle]
 . link:plugins/README.adoc[Plugins]
-.. link:plugins/INTRO.adoc[Introduction]
-.. link:plugins/COOKBOOK.adoc[Making plugins]
-. Unfinished Chapter
+.. link:plugins/Introduction.adoc[Introduction]
+.. link:plugins/Making_Plugins.adoc[Making plugins]

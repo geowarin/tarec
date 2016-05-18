@@ -6,6 +6,7 @@
     "test": "mocha",
     "docs": "npm run docs:build",
     "docs:pre": "gitbook install",
+    "docs:watch": "gitbook serve",
     "docs:build": "gitbook build -g geowarin/tarec",
     "docs:publish": "gh-pages -d _book"
   },

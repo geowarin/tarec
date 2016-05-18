@@ -4,3 +4,8 @@ aliases:
 
 proxies:
   - /api: http://localhost:8080
+
+define:
+  - API_URL: http://localhost:8080
+  - API_URL2: ${UNDEF_ENV_VAR:http://localhost:9090}
+  - API_URL3: ${ENV_VAR:http://localhost:8080}

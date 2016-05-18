@@ -68,6 +68,31 @@ proxies:
 
 The above configuration will redirect every request made to `${yourServerUrl}/api` to `http://localhost:8080/api`
 
+### Variable definitions
+
+In your build process, it can be useful to define variables that will be available
+from your application.
+
+For instance, we can define an `API_URL` variable in the `tarec.yml` file:
+
+```yaml
+define:
+  - API_URL: http://localhost:8080
+  - API_URL2: ${ENV_VAR:http://localhost:9090}
+```
+
+In the above example, API_URL will be resolved as a string whose value is always
+`http://localhost:8080`.
+
+`API_URL2` will take its value from an environment variables
+called `ENV_VAR` if it is defined, and default to `http://localhost:9090`, otherwise.
+
+We can now use the variable directly in our application:
+
+```javascript
+console.log(API_URL);
+```
+
 ### Plugins
 
 Tarec has a powerful, yet simple plugin system.

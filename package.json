@@ -41,6 +41,7 @@
     "js-yaml": "^3.6.0",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
+    "ngrok": "^2.1.8",
     "open": "0.0.5",
     "postcss-loader": "^0.9.1",
     "react-transform-catch-errors": "^1.0.2",

@@ -1,3 +1,5 @@
+![Tarec logo](img/logo.png)
+
 # The Awesome REact CLI
 
 Tarec takes care of your React build for you. No more googling and stitching boilerplates together. Just write your application.
@@ -123,5 +125,8 @@ plugins:
 
 ## Todo
 
-* Configuration file and command-line switches
 * React-Hot-Loader 3?
+
+# Thanks
+
+[@mrasoahaingo](https://github.com/mrasoahaingo) for the logo!

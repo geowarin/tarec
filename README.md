@@ -2,6 +2,10 @@
 
 # The Awesome REact CLI
 
+[![npm](https://img.shields.io/npm/v/tarec.svg)](https://www.npmjs.com/package/tarec)
+[![Build Status](https://travis-ci.org/geowarin/tarec.svg?branch=master)](https://travis-ci.org/geowarin/tarec)
+[![Coverage Status](https://coveralls.io/repos/github/geowarin/tarec/badge.svg?branch=master)](https://coveralls.io/github/geowarin/tarec?branch=master)
+
 Tarec takes care of your React build for you. No more googling and stitching boilerplates together. Just write your application.
 
 ## Features

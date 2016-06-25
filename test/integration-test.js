@@ -7,12 +7,19 @@ const fs = require('fs');
 const path = require('path');
 const Nightmare = require('nightmare');
 const {execSync} = require('child_process');
+const deasync = require('deasync');
+const findOpenPort = deasync(require('portfinder').getPort);
 
 const test = require('ava');
 
-function recursiveReaddir (root) {
+function recursiveReaddir (root, includeFiles = true, includeDirs = false) {
   const files = [root];
   const results = [];
+
+  const addResult = (file, parent) => {
+    const relativeParent = path.relative(root, parent);
+    results.push(path.join(relativeParent, file));
+  };
 
   while (files.length) {
     const parent = files.pop();
@@ -22,9 +29,11 @@ function recursiveReaddir (root) {
       const fullPath = path.join(parent, file);
       if (fs.statSync(fullPath).isDirectory()) {
         files.push(fullPath);
-      } else {
-        const relativeParent = path.relative(root, parent);
-        results.push(path.join(relativeParent, file));
+        if (includeDirs) {
+          addResult(file, parent);
+        }
+      } else if (includeFiles) {
+        addResult(file, parent);
       }
     }
   }
@@ -48,12 +57,16 @@ function toHaveFilesMatching (...regexps) {
   )
 }
 
-expect.extend({toHaveFiles, toHaveFilesMatching});
-
-function npmInstall (cwd) {
-  execSync('npm install', {cwd, stdio: ['ignore', 'ignore', 'pipe']})
+function toHaveDirectories (...expectedDirs) {
+  const files = recursiveReaddir(this.actual, false, true);
+  expect(files).toInclude(...expectedDirs);
 }
 
+expect.extend({toHaveFiles, toHaveFilesMatching, toHaveDirectories});
+
+function npmInstall (cwd) {
+  execSync('npm install --cache-min 99999', {cwd, stdio: ['ignore', 'ignore', 'inherit']})
+}
 
 test.cb('Should init and run', t => {
   // things do not work properly in tmp on mac
@@ -64,14 +77,18 @@ test.cb('Should init and run', t => {
   expect(tmp).toHaveFiles('package.json', 'src/index.js');
 
   npmInstall(tmp);
-  tarec(tmp, ['start']);
+  const nodeModulesDir = path.join(tmp, 'node_modules');
+  expect(nodeModulesDir).toHaveDirectories('react', 'react-dom');
+
+  const port = findOpenPort();
+  tarec(tmp, ['start', '-p', port]);
 
   Nightmare()
-    .goto('http://localhost:3000')
+    .goto(`http://0.0.0.0:${port}`)
     .wait(() => document.querySelector('h1').textContent === 'Hello')
     .end()
     .then(t.end);
-
+  
 });
 
 test('Should init and build', () => {

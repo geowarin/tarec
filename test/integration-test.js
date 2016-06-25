@@ -51,7 +51,7 @@ function toHaveFilesMatching (...regexps) {
 expect.extend({toHaveFiles, toHaveFilesMatching});
 
 function npmInstall (cwd) {
-  execSync('npm install --cache-min 99999', {cwd, stdio: [0, 1, 2]})
+  execSync('npm install --cache-min 99999', {cwd, stdio: ['ignore', 'ignore', 'ignore']})
 }
 
 

@@ -3,8 +3,8 @@
   "version": "1.0.0-beta.23",
   "description": "The Awesome REact Cli",
   "scripts": {
-    "test": "mocha",
-    "cov": "nyc -a mocha",
+    "test": "ava",
+    "cov": "nyc -a ava",
     "docs": "npm run docs:build",
     "docs:pre": "gitbook install",
     "docs:watch": "gitbook serve",
@@ -59,10 +59,10 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
     "expect": "^1.19.0",
     "gh-pages": "^0.11.0",
     "gitbook-cli": "^2.1.3",
-    "mocha": "^2.4.5",
     "nightmare": "^2.5.2",
     "nyc": "^6.4.4",
     "temp": "^0.8.3"

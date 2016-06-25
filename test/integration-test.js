@@ -8,6 +8,8 @@ const path = require('path');
 const Nightmare = require('nightmare');
 const {execSync} = require('child_process');
 
+const test = require('ava');
+
 function recursiveReaddir (root) {
   const files = [root];
   const results = [];
@@ -29,9 +31,9 @@ function recursiveReaddir (root) {
   return results;
 }
 
-function toHaveFiles (...files) {
+function toHaveFiles (...expectedFiles) {
   const files = recursiveReaddir(this.actual);
-  expect(files).toInclude(...files);
+  expect(files).toInclude(...expectedFiles);
 }
 
 function toHaveFilesMatching (...regexps) {
@@ -48,75 +50,43 @@ function toHaveFilesMatching (...regexps) {
 
 expect.extend({toHaveFiles, toHaveFilesMatching});
 
-
-class LogInterceptor {
-
-  constructor () {
-    this.oldStdOutWriter = process.stdout.write;
-    this.logs = [];
-  }
-
-  capture () {
-    process.stdout.write = (string, encoding, fd) => {
-      this.logs.push(string);
-    };
-  }
-
-  restore () {
-    process.stdout.write = this.oldStdOutWriter;
-  }
-}
-
-const logInterceptor = new LogInterceptor();
-
 function npmInstall (cwd) {
   execSync('npm install --cache-min 99999', {cwd, stdio: [0, 1, 2]})
 }
 
-describe('Integration tests', () => {
 
-  it('Should init and run', (done) => {
-    // things do not work properly in tmp on mac
-    const tmp = temp.mkdirSync({dir: __dirname});
+test.cb('IT - Should init and run', t => {
+  // things do not work properly in tmp on mac
+  const tmp = temp.mkdirSync({dir: __dirname});
 
-    // logInterceptor.capture();
+  tarec(tmp, ['init', '--minimal']);
 
-    tarec(tmp, ['init', '--minimal']);
+  expect(tmp).toHaveFiles('package.json', 'src/index.js');
 
-    expect(tmp).toHaveFiles('package.json', 'src/index.js');
+  npmInstall(tmp);
+  tarec(tmp, ['start']);
 
-    npmInstall(tmp);
-    tarec(tmp, ['start']);
+  Nightmare()
+    .goto('http://localhost:3000')
+    .wait(() => document.querySelector('h1').textContent === 'Hello')
+    .end()
+    .then(t.end);
 
-    Nightmare()
-      .goto('http://localhost:3000')
-      .wait(() => document.querySelector('h1').textContent === 'Hello')
-      .end()
-      .then(done);
+});
 
-    // logInterceptor.restore();
+test('Should init and build', () => {
+  // things do not work properly in tmp on mac
+  const tmp = temp.mkdirSync({dir: __dirname});
 
-  }).timeout(10000);
+  tarec(tmp, ['init', '--minimal']);
 
-  it('Should init and build', () => {
-    // things do not work properly in tmp on mac
-    const tmp = temp.mkdirSync({dir: __dirname});
+  const topLevelFiles = fs.readdirSync(tmp);
+  expect(topLevelFiles).toInclude('package.json');
 
-    // logInterceptor.capture();
+  npmInstall(tmp);
+  tarec(tmp, ['build']);
 
-    tarec(tmp, ['init', '--minimal']);
-
-    const topLevelFiles = fs.readdirSync(tmp);
-    expect(topLevelFiles).toInclude('package.json');
-
-    npmInstall(tmp);
-    tarec(tmp, ['build']);
-
-    const distFolder = path.join(tmp, 'dist');
-    expect(distFolder).toHaveFilesMatching(/main-.+?\.js/, /vendors-.+?\.js/, 'index.html');
-
-    // logInterceptor.restore();
-
-  }).timeout(10000);
+  const distFolder = path.join(tmp, 'dist');
+  expect(distFolder).toHaveFilesMatching(/main-.+?\.js/, /vendors-.+?\.js/, 'index.html');
 
 });

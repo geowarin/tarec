@@ -3,8 +3,8 @@
   "version": "1.0.0-beta.23",
   "description": "The Awesome REact Cli",
   "scripts": {
-    "test": "ava",
-    "cov": "nyc -a ava",
+    "test": "nyc -a ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs": "npm run docs:build",
     "docs:pre": "gitbook install",
     "docs:watch": "gitbook serve",
@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "ava": "^0.15.2",
+    "coveralls": "^2.11.9",
     "expect": "^1.19.0",
     "gh-pages": "^0.11.0",
     "gitbook-cli": "^2.1.3",
@@ -70,9 +71,6 @@
   "nyc": {
     "include": [
       "lib/**/*.js"
-    ],
-    "exclude": [
-      "lib/templates"
     ]
   }
 }

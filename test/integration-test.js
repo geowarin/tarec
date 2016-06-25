@@ -51,11 +51,11 @@ function toHaveFilesMatching (...regexps) {
 expect.extend({toHaveFiles, toHaveFilesMatching});
 
 function npmInstall (cwd) {
-  execSync('npm install --cache-min 99999', {cwd, stdio: ['ignore', 'ignore', 'ignore']})
+  execSync('npm install', {cwd, stdio: ['ignore', 'ignore', 'pipe']})
 }
 
 
-test.cb('IT - Should init and run', t => {
+test.cb('Should init and run', t => {
   // things do not work properly in tmp on mac
   const tmp = temp.mkdirSync({dir: __dirname});
 

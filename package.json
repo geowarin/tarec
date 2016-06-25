@@ -3,7 +3,8 @@
   "version": "1.0.0-beta.24",
   "description": "The Awesome REact Cli",
   "scripts": {
-    "test": "nyc -a ava",
+    "test": "nyc -r none -a ava",
+    "report": "nyc report",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs": "npm run docs:build",
     "docs:pre": "gitbook install",
@@ -67,6 +68,7 @@
     "nightmare": "^2.5.2",
     "nyc": "^6.4.4",
     "portfinder": "^1.0.3",
+    "strip-ansi": "^3.0.1",
     "temp": "^0.8.3"
   },
   "nyc": {

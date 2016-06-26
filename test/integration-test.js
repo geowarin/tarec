@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('expect');
-const tarec = require('../lib/bin/main');
+const tarec = require('../lib/main');
 const temp = require('temp').track();
 const fs = require('fs');
 const path = require('path');
@@ -88,7 +88,7 @@ test.cb('Should init and run', t => {
     .wait(() => document.querySelector('h1').textContent === 'Hello')
     .end()
     .then(t.end);
-  
+
 });
 
 test('Should init and build', () => {

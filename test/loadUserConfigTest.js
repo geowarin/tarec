@@ -1,6 +1,6 @@
 const expect = require('expect');
 const path = require('path');
-const loadUserConfig = require('../lib/bin/loadUserConfig');
+const loadUserConfig = require('../lib/config/loadUserConfig');
 const test = require('ava');
 
 test('should parse config', () => {

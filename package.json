@@ -13,7 +13,7 @@
     "docs:publish": "gh-pages -d _book"
   },
   "bin": {
-    "tarec": "lib/bin/tarec.js"
+    "tarec": "bin/tarec.js"
   },
   "keywords": [],
   "author": "",

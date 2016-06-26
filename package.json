@@ -20,7 +20,15 @@
     "react",
     "cli"
   ],
-  "author": "",
+  "author": "Geoffroy Warin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geowarin/tarec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geowarin/tarec/issues"
+  },
+  "homepage": "http://geowarin.github.io/tarec",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.7.7",

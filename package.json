@@ -1,6 +1,6 @@
 {
   "name": "tarec",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The Awesome REact Cli",
   "scripts": {
     "test": "nyc -r none -a ava",

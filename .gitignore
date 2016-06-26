@@ -2,3 +2,4 @@
 node_modules/
 _book/
 .nyc_output/
+coverage

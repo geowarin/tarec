@@ -65,23 +65,3 @@ test('Can add behavior to existing command', t => {
   commands.run('start');
   expect(beforeSpy).toHaveBeenCalled();
 });
-
-test('should display help', t => {
-
-  const commands = new Commands();
-
-  debug.capture();
-  commands
-    .add('cmd')
-    .summary('Cmd Summary');
-
-  commands.showHelp('v0');
-  t.deepEqual(debug.capturedMessages, [
-    'Tarec v0',
-    'Available commands:',
-    '* cmd',
-    'Cmd Summary',
-    'Type tarec <command> --help for more information on a specific command'
-  ]);
-  debug.endCapture();
-});

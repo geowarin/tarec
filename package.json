@@ -44,7 +44,6 @@
     "http-proxy-middleware": "^0.14.0",
     "js-yaml": "^3.6.0",
     "json-loader": "^0.5.4",
-    "minimist": "^1.2.0",
     "ngrok": "^2.1.8",
     "open": "0.0.5",
     "postcss-loader": "^0.9.1",
@@ -57,7 +56,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.6",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "yargs": "^4.7.1"
   },
   "devDependencies": {
     "ava": "^0.15.2",

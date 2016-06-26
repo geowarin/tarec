@@ -15,7 +15,11 @@
   "bin": {
     "tarec": "bin/tarec.js"
   },
-  "keywords": [],
+  "keywords": [
+    "awesome",
+    "react",
+    "cli"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {

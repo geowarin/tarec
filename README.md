@@ -42,6 +42,12 @@ in the `dist` folder.
 
 ## Configuration
 
+### index.html
+
+If no `index.html` is found at the root of your project, one will be generated for you.
+If you provide one, css and scripts will be injected for you,
+as described in the [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin).
+
 ### Static resources
 
 All the files in the `public` directory of your project will be served by the dev server and will be copied
@@ -49,7 +55,7 @@ as-is int the `dist` directory.
 
 ### Babel aliases
 
-Create a `tarec.yml` file and configure aliases like this:
+Create a `tarec.yml` file and configure [aliases](https://github.com/tleunen/babel-plugin-module-alias) like this:
 
 ```yaml
 
@@ -130,6 +136,8 @@ plugins:
 ## Todo
 
 * React-Hot-Loader 3?
+* Support server compilation and universal apps
+* Typescript
 
 # Thanks
 

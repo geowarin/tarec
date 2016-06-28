@@ -1,7 +1,6 @@
 import expect from 'expect';
 import React from 'react';
 import describeWithDom from 'describe-with-dom';
-import App from 'compo/App';
 
 describeWithDom('index', () => {
 
@@ -13,15 +12,11 @@ describeWithDom('index', () => {
 });
 
 function createAppDiv() {
-  const appDiv = getDocument().createElement('div');
+  const appDiv = document.createElement('div');
   appDiv.setAttribute('id', 'app');
-  getDocument().body.appendChild(appDiv);
-}
-
-function getDocument() {
-  return document.defaultView.document;
+  document.body.appendChild(appDiv);
 }
 
 function getHtmlBody() {
-  return getDocument().documentElement.outerHTML;
+  return document.documentElement.outerHTML;
 }

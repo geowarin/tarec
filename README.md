@@ -40,6 +40,10 @@ Read [the documentation](http://geowarin.github.io/tarec/)
 Use `tarec start` to launch a dev-server with hot-reload and `tarec build` to generate the optimized version of your application
 in the `dist` folder.
 
+## Requirements
+
+Node 6+ and npm 3+.
+
 ## Configuration
 
 ### index.html

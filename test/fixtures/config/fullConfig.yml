@@ -1,3 +1,5 @@
+happypack: true
+
 aliases:
   - compo: ./src/components
   - app: ../app/dir/app

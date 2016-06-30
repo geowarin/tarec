@@ -68,9 +68,13 @@ function npmInstall (cwd) {
   execSync('npm install --cache-min 99999', {cwd, stdio: ['ignore', 'ignore', 'inherit']})
 }
 
-test.cb('Should init and run', t => {
+function makeTempDir() {
   // things do not work properly in tmp on mac
-  const tmp = temp.mkdirSync({dir: __dirname});
+  return temp.mkdirSync({dir: path.join(__dirname, '../tmp')});
+}
+
+test.cb('Should init and run', t => {
+  const tmp = makeTempDir();
 
   tarec(tmp, ['init', '--minimal']);
 
@@ -92,8 +96,7 @@ test.cb('Should init and run', t => {
 });
 
 test('Should init and build', () => {
-  // things do not work properly in tmp on mac
-  const tmp = temp.mkdirSync({dir: __dirname});
+  const tmp = makeTempDir();
 
   tarec(tmp, ['init', '--minimal']);
 

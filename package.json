@@ -53,7 +53,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.16.0",
-    "http-proxy-middleware": "^0.14.0",
+    "http-proxy-middleware": "^0.17.0",
     "js-yaml": "^3.6.0",
     "json-loader": "^0.5.4",
     "open": "0.0.5",

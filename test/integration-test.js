@@ -70,7 +70,11 @@ function npmInstall (cwd) {
 
 function makeTempDir() {
   // things do not work properly in tmp on mac
-  return temp.mkdirSync({dir: path.join(__dirname, '../tmp')});
+  const tmp = path.join(__dirname, '../tmp');
+  if (!fs.existsSync(tmp)) {
+    fs.mkdirSync(tmp);
+  }
+  return temp.mkdirSync({dir: tmp});
 }
 
 test.cb('Should init and run', t => {
@@ -92,7 +96,6 @@ test.cb('Should init and run', t => {
     .wait(() => document.querySelector('h1').textContent === 'Hello')
     .end()
     .then(t.end);
-
 });
 
 test('Should init and build', () => {
@@ -100,13 +103,21 @@ test('Should init and build', () => {
 
   tarec(tmp, ['init', '--minimal']);
 
-  const topLevelFiles = fs.readdirSync(tmp);
-  expect(topLevelFiles).toInclude('package.json');
-
   npmInstall(tmp);
   tarec(tmp, ['build']);
 
   const distFolder = path.join(tmp, 'dist');
   expect(distFolder).toHaveFilesMatching(/main-.+?\.js/, /vendors-.+?\.js/, 'index.html');
+});
 
+test('Should generate dll', () => {
+  const tmp = makeTempDir();
+
+  tarec(tmp, ['init', '--minimal']);
+
+  npmInstall(tmp);
+  tarec(tmp, ['dll']);
+
+  const dllFolder = path.join(tmp, '.tarec/dll');
+  expect(dllFolder).toHaveFiles('vendor.dll.js', 'vendor.manifest.json');
 });

@@ -3,7 +3,7 @@ const path = require('path');
 const loadUserConfig = require('../lib/config/loadUserConfig');
 const test = require('ava');
 
-test('should parse config', () => {
+test('config : should parse config', () => {
   process.env['ENV_VAR'] = 'http://localhost:8181';
   const projectDir = path.resolve('fixtures/config/fullConfig.yml');
   const userConfig = loadUserConfig(projectDir);
@@ -26,7 +26,7 @@ test('should parse config', () => {
   });
 });
 
-test('should parse empty config', () => {
+test('config : should parse empty config', () => {
   const projectDir = path.resolve('fixtures/config/emptyConfig.yml');
   const userConfig = loadUserConfig(projectDir);
 

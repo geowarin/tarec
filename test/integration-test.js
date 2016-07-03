@@ -40,8 +40,13 @@ function recursiveReaddir (root, includeFiles = true, includeDirs = false) {
   return results;
 }
 
-function toHaveFiles (...expectedFiles) {
+function toHaveFilesDeep (...expectedFiles) {
   const files = recursiveReaddir(this.actual);
+  expect(files).toInclude(...expectedFiles);
+}
+
+function toHaveFiles (...expectedFiles) {
+  const files = fs.readdirSync(this.actual);
   expect(files).toInclude(...expectedFiles);
 }
 
@@ -62,7 +67,7 @@ function toHaveDirectories (...expectedDirs) {
   expect(files).toInclude(...expectedDirs);
 }
 
-expect.extend({toHaveFiles, toHaveFilesMatching, toHaveDirectories});
+expect.extend({toHaveFiles, toHaveFilesDeep, toHaveFilesMatching, toHaveDirectories});
 
 function npmInstall (cwd) {
   execSync('npm install --cache-min 99999', {cwd, stdio: ['ignore', 'ignore', 'inherit']})
@@ -77,12 +82,12 @@ function makeTempDir() {
   return temp.mkdirSync({dir: tmp});
 }
 
-test.cb('Should init and run', t => {
+test.cb('it-start : Should init and run', t => {
   const tmp = makeTempDir();
 
   tarec(tmp, ['init', '--minimal']);
 
-  expect(tmp).toHaveFiles('package.json', 'src/index.js');
+  expect(tmp).toHaveFilesDeep('package.json', 'src/index.js');
 
   npmInstall(tmp);
   const nodeModulesDir = path.join(tmp, 'node_modules');
@@ -98,19 +103,21 @@ test.cb('Should init and run', t => {
     .then(t.end);
 });
 
-test('Should init and build', () => {
+test('it-build : should init and build', () => {
   const tmp = makeTempDir();
 
   tarec(tmp, ['init', '--minimal']);
 
   npmInstall(tmp);
-  tarec(tmp, ['build']);
+  tarec(tmp, ['build', '--stats']);
 
   const distFolder = path.join(tmp, 'dist');
   expect(distFolder).toHaveFilesMatching(/main-.+?\.js/, /vendors-.+?\.js/, 'index.html');
+
+  expect(tmp).toHaveFiles('webpack-stats.json');
 });
 
-test('Should generate dll', () => {
+test('it-dll : should generate dll', () => {
   const tmp = makeTempDir();
 
   tarec(tmp, ['init', '--minimal']);

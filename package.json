@@ -89,6 +89,9 @@
   "nyc": {
     "include": [
       "lib/**/*.js"
+    ],
+    "exclude": [
+      "lib/utils/debug.js"
     ]
   }
 }

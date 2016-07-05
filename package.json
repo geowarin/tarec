@@ -93,5 +93,10 @@
     "exclude": [
       "lib/utils/debug.js"
     ]
+  },
+  "ava": {
+    "files": [
+      "test/**/*.spec.js"
+    ]
   }
 }

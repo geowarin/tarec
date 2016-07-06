@@ -5,10 +5,10 @@ const test = require('ava');
 
 test('dll : should fail if manifest is missing', t => {
 
-  const dllDiretocry = path.join(__dirname, 'fixtures/dlls/missing-dll');
+  const dllDirectory = path.join(__dirname, 'fixtures/dlls/missing-dll');
   t.throws(
     () => {
-      lookForDlls(dllDiretocry)
+      lookForDlls(dllDirectory)
     },
     'File not found: test.manifest.json'
   )
@@ -16,8 +16,8 @@ test('dll : should fail if manifest is missing', t => {
 
 test('dll : should list dlls', t => {
 
-  const dllDiretocry = path.join(__dirname, 'fixtures/dlls/vendor-dll');
-  const dlls = lookForDlls(dllDiretocry);
+  const dllDirectory = path.join(__dirname, 'fixtures/dlls/vendor-dll');
+  const dlls = lookForDlls(dllDirectory);
   t.deepEqual(dlls, [
     {manifestFile: 'vendor.manifest.json', dllFile: 'vendor.dll.js'}
   ])

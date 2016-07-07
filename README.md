@@ -24,6 +24,8 @@ Tarec takes all the best practices in the React community and makes them availab
 * Simple babel aliases configuration
 * Simple plugins system to add support for sass or mocha
 * Publish on github pages
+* Support [DLLs](http://engineering.invisionapp.com/post/optimizing-webpack/) for faster development
+* Mutithreaded compilation with [happypack](https://github.com/amireh/happypack)
 
 ## Documentation
 
@@ -44,6 +46,20 @@ in the `dist` folder.
 
 Node 6+ and npm 3+.
 
+## Caveats
+
+Webpack 2 is still in beta. Some loaders have not updated to the newer peer dependency even though they are fully compatible.
+This means that you will get warnings about unresolved peer dependencies when installing tarec.
+
+In most case, with npm 3, this is not a big deal but it will prevent you from using shrinkwrap.
+
+This issue will most certainly go away once webpack 2 is out of beta.
+You can follow those issues on the faulty loaders' repositories:
+
+* [babel-loader](https://github.com/babel/babel-loader/issues/239)
+* [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin/issues/168)
+* [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware/issues/45)
+
 ## Configuration
 
 ### index.html
@@ -56,6 +72,23 @@ as described in the [html-webpack-plugin](https://github.com/ampedandwired/html-
 
 All the files in the `public` directory of your project will be served by the dev server and will be copied
 as-is int the `dist` directory.
+
+### Happypack
+
+[Happypack](https://github.com/amireh/happypack) will build your css and js file by file in parallel, which
+can decrease your build time in development.
+
+By default, happypack is disabled. You can enable it with a command-line flage (`tarec start --happy`) or
+configure it in your `tarec.yml` file:
+
+```yml
+happypack:
+  enabled: true    # default = false
+  cache: true       # default = true
+  cpus: 4             # default = os.cpus().length
+```
+
+Happypack is only used in development mode.
 
 ### Babel aliases
 
@@ -108,6 +141,28 @@ We can now use the variable directly in our application:
 ```javascript
 console.log(API_URL);
 ```
+
+### DLLs
+
+When you start your application in development mode, webpack will go through every asset and library to resolve the imports
+you wrote.
+While your code changes on a regular basis, your dependencies do not.
+It is thus wasteful to re-link them on every build.
+
+[DLLs](http://engineering.invisionapp.com/post/optimizing-webpack/) solve that problem by allowing you to pre-bundle
+all your dependencies in a single js file. A manifest file will also be generated so webpack knows how to wire
+those dependencies to your code.
+
+Every time your dependencies change, run `tarec dll` to regenerate your project's dlls.
+They will be put in the `.tarec/dll` folder, at the root of your project.
+
+When tarec starts (`tarec start`), it will look in this directory and automatically pick up those dlls.
+Webpack will therefore only compile your own code.
+
+On projects with lots of dependencies, this call yield a very significant performance boost on both startup and
+rebuild time.
+
+DLLs are only used in development mode.
 
 ### Plugins
 

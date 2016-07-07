@@ -4,3 +4,4 @@ _book/
 .nyc_output/
 coverage/
 tmp/
+npm-debug.log

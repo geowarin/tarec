@@ -5,7 +5,7 @@ const debug = require('../lib/utils/debug');
 const test = require('ava');
 const expect = require('expect');
 
-test('should warn if local plugin is not found', t => {
+test('plugins : should warn if local plugin is not found', t => {
 
   const plugins = ['./doesNotExist'];
   const context = {projectDir: __dirname};
@@ -17,7 +17,7 @@ test('should warn if local plugin is not found', t => {
   debug.endCapture();
 });
 
-test('should fail if plugin throws', t => {
+test('plugins : should fail if plugin throws', t => {
 
   const plugins = ['./fixtures/plugins/failingPlugin.js'];
   const context = {projectDir: __dirname};
@@ -37,7 +37,7 @@ test('should fail if plugin throws', t => {
 });
 
 
-test('should not throw if plugin exists', t => {
+test('plugins : should not throw if plugin exists', t => {
 
   const plugins = ['./fixtures/plugins/examplePlugin.js'];
   const context = {projectDir: __dirname};
@@ -50,3 +50,16 @@ test('should not throw if plugin exists', t => {
   );
 });
 
+
+test('plugins : should load external plugin', t => {
+
+  const plugins = ['noop2'];
+  const context = {projectDir: __dirname};
+  const commands = new Commands();
+
+  t.notThrows(
+    () => {
+      addConfiguredPlugins(plugins, context, commands);
+    }
+  );
+});

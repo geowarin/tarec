@@ -16,7 +16,7 @@ test('should add built-in commands', t => {
   t.true(commands.exists('start'));
 });
 
-test('should call the command', t => {
+test('commands : should call the command', t => {
 
   let hasBeenCalled = false;
   const commands = new Commands();
@@ -33,7 +33,7 @@ test('should call the command', t => {
   t.is(beforeSpy.calls.length, 2);
 });
 
-test('Cannot redeclare existing command', t => {
+test('commands : cannot redeclare existing command', t => {
 
   const commands = new Commands();
   commands
@@ -50,7 +50,7 @@ test('Cannot redeclare existing command', t => {
   );
 });
 
-test('Can add behavior to existing command', t => {
+test('commands : can add behavior to existing command', t => {
 
   const beforeSpy = expect.createSpy();
   const commands = new Commands();

@@ -2,4 +2,6 @@
 node_modules/
 _book/
 .nyc_output/
-coverage
+coverage/
+tmp/
+npm-debug.log

@@ -1,3 +1,7 @@
+happypack:
+  enabled: true
+  cpus: 2
+
 aliases:
   - compo: ./src/components
   - app: ../app/dir/app

@@ -22,7 +22,7 @@
   "devDependencies": {
     "gh-pages": "^0.11.0",
     "tarec": "^{{tarecVersion}}",
-    "tarec-plugin-mocha-test": "^2.0.0",
-    "tarec-plugin-sass": "^1.0.0"
+    "tarec-plugin-mocha-test": "~2.0.0",
+    "tarec-plugin-sass": "~2.0.0"
   }
 }

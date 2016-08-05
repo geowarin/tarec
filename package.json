@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "add-asset-html-webpack-plugin": "1.0.0",
-    "babel-core": "6.11.4",
+    "babel-core": "6.13.1",
     "babel-loader": "6.2.4",
     "babel-plugin-module-alias": "1.6.0",
     "babel-plugin-react-transform": "2.0.2",

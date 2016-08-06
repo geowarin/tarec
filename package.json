@@ -31,7 +31,7 @@
   "homepage": "http://geowarin.github.io/tarec",
   "license": "MIT",
   "dependencies": {
-    "add-asset-html-webpack-plugin": "1.0.0",
+    "add-asset-html-webpack-plugin": "1.0.1",
     "babel-core": "6.13.2",
     "babel-loader": "6.2.4",
     "babel-plugin-module-alias": "1.6.0",

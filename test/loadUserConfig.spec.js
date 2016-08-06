@@ -6,8 +6,7 @@ const os = require('os');
 
 test('config : should parse config', () => {
   process.env['ENV_VAR'] = 'http://localhost:8181';
-  const projectDir = path.resolve('fixtures/config/fullConfig.yml');
-  const userConfig = loadUserConfig(projectDir);
+  const userConfig = loadUserConfig(path.resolve('fixtures/config/fullConfig.yml'));
 
   expect(userConfig.happypack).toEqual({
     enabled: true,
@@ -32,8 +31,7 @@ test('config : should parse config', () => {
 });
 
 test('config : should parse empty config', () => {
-  const projectDir = path.resolve('fixtures/config/emptyConfig.yml');
-  const userConfig = loadUserConfig(projectDir);
+  const userConfig = loadUserConfig(path.resolve('fixtures/config/emptyConfig.yml'));
 
   expect(userConfig.happypack).toEqual({
     enabled: false,

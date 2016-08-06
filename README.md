@@ -16,6 +16,7 @@ Tarec takes all the best practices in the React community and makes them availab
 * Babel 6 stage 0
 * Tree-shaking with webpack 2
 * Hot reloading with react-hmr
+* Great DX experience with build notifications and clean error messages
 * Pre-configured loaders for all resources (images, fonts, json, ...)
 * Separate bundles for vendors and your code (css and js)
 * Cache-busting
@@ -89,6 +90,20 @@ happypack:
 ```
 
 Happypack is only used in development mode.
+
+### Notifications
+
+By default, tarec will display an os notification on build errors.
+This can be very handy because you don't always have the console visible when coding.
+But if you are annoyed by this feature, you can disable it:
+
+```yml
+build:
+  # show notifications on build failure. Default, true
+  showNotification: true
+```
+
+![Build error notifications](http://i.imgur.com/UN7hhJF.gif)
 
 ### Babel aliases
 

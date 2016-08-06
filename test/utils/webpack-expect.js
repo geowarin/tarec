@@ -86,7 +86,7 @@ function toNotHavePlugin (pluginName) {
 
   const matchingPlugins = plugins.filter(p => p.name == pluginName);
   expect.assert(
-    matchingPlugins.length >= 0,
+    matchingPlugins.length === 0,
     'Plugin %s wasn\'t expected in config',
     pluginName
   );

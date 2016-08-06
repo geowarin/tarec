@@ -37,7 +37,7 @@ test.cb('it-start : Should init and run', t => {
   expect(nodeModulesDir).toHaveDirectories('react', 'react-dom');
 
   const port = findOpenPort();
-  tarec(tmp, ['start', '-p', port]);
+  tarec(tmp, ['start', '-p', port, '--quiet']);
 
   Nightmare()
     .goto(`http://0.0.0.0:${port}`)

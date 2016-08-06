@@ -75,7 +75,7 @@
     "yargs": "4.8.1"
   },
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^0.16.0",
     "coveralls": "^2.11.9",
     "expect": "^1.19.0",
     "gh-pages": "^0.11.0",

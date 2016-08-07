@@ -57,7 +57,7 @@ test('webpack : dev config should handle dlls', t => {
   };
   expect(devConfig).toHavePlugin('DllReferencePlugin', expectedDllPluginOptions);
   var expectedAssetPluginOptions = {assets: [
-    {filename: path.join(projectDir, '.tarec/dll/vendor.dll.js')}
+    {filepath: path.join(projectDir, '.tarec/dll/vendor.dll.js')}
   ]};
   expect(devConfig).toHavePlugin('AddAssetHtmlPlugin', expectedAssetPluginOptions);
 });

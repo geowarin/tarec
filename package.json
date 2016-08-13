@@ -59,7 +59,7 @@
     "json-loader": "0.5.4",
     "lodash.find": "4.5.1",
     "lodash.groupby": "4.5.1",
-    "lodash.merge": "4.5.1",
+    "lodash.merge": "4.6.0",
     "open": "0.0.5",
     "postcss-loader": "0.9.1",
     "react-transform-catch-errors": "1.0.2",

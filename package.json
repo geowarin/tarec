@@ -72,7 +72,7 @@
     "webpack": "2.1.0-beta.20",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.12.2",
-    "yargs": "4.8.1"
+    "yargs": "5.0.0"
   },
   "devDependencies": {
     "ava": "^0.16.0",

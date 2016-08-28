@@ -5,3 +5,7 @@ aliases:
 plugins:
   - tarec-plugin-mocha-test
   - tarec-plugin-sass
+
+build:
+  # show notifications on build failure. Default, true
+  showNotification: true

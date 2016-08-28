@@ -10,7 +10,8 @@ function createMinimalContext() {
     projectDir,
     rootDir: '/tarec',
     userConfig: loadUserConfig(null),
-    pkg: {name: 'my-project'}
+    pkg: {name: 'my-project'},
+    dlls: []
   };
 }
 
@@ -34,11 +35,19 @@ test('webpack : build config should not minify if opted out', () => {
 test('webpack : dev config should handle common files', t => {
 
   const context = createMinimalContext();
-  context.dlls = [];
   const args = {};
   const devConfig = require('../lib/webpack/webpack.dev.config')(context, args);
   expect(devConfig).toHandleFiles('my.css', 'my.module.css', 'my.json', 'my.woff', 'my.woff2', 'my.ttf', 'my.png');
   expect(devConfig).toHavePlugin('HotModuleReplacementPlugin');
+  expect(devConfig).toHavePlugin('FriendlyErrorsWebpackPlugin');
+});
+
+test('webpack : dev config should disable friendly errors', t => {
+
+  const context = createMinimalContext();
+  const args = {quiet: true};
+  const devConfig = require('../lib/webpack/webpack.dev.config')(context, args);
+  expect(devConfig).toNotHavePlugin('FriendlyErrorsWebpackPlugin');
 });
 
 test('webpack : dev config should handle dlls', t => {
@@ -62,7 +71,7 @@ test('webpack : dev config should handle dlls', t => {
   expect(devConfig).toHavePlugin('AddAssetHtmlPlugin', expectedAssetPluginOptions);
 });
 
-test('webpack : happyPack', () => {
+test('webpack : dev config should configure happyPack', () => {
 
   const context = createMinimalContext();
   context.dlls = [];

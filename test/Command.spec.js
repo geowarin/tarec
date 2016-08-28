@@ -7,7 +7,7 @@ const addBuiltInCommands = require('../lib/commands/addBuiltInCommands');
 const test = require('ava');
 const debug = require('../lib/utils/debug');
 
-test('should add built-in commands', t => {
+test('commands: should add built-in commands', t => {
   const commands = new Commands();
   addBuiltInCommands(commands);
 

@@ -14,6 +14,7 @@ Tarec takes all the best practices in the React community and makes them availab
 
 * Instant project generation
 * Babel 6 stage 0
+* Great developer experience with webpack errors analysis and desktop notifications
 * Tree-shaking with webpack 2
 * Hot reloading with react-hmr
 * Great DX experience with build notifications and clean error messages

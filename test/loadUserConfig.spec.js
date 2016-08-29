@@ -28,7 +28,7 @@ test('config : should parse config', () => {
   });
 });
 
-test.only('config: should support environment variables everywhere', t => {
+test('config: should support environment variables everywhere', t => {
   process.env['HAPPY'] = 'false';
   process.env['API_URL'] = 'http://localhost:8080';
 

@@ -48,20 +48,6 @@ in the `dist` folder.
 
 Node 6+ and npm 3+.
 
-## Caveats
-
-Webpack 2 is still in beta. Some loaders have not updated to the newer peer dependency even though they are fully compatible.
-This means that you will get warnings about unresolved peer dependencies when installing tarec.
-
-In most case, with npm 3, this is not a big deal but it will prevent you from using shrinkwrap.
-
-This issue will most certainly go away once webpack 2 is out of beta.
-You can follow those issues on the faulty loaders' repositories:
-
-* [babel-loader](https://github.com/babel/babel-loader/issues/239)
-* [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin/issues/168)
-* [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware/issues/45)
-
 ## Configuration
 
 ### index.html
@@ -104,7 +90,7 @@ build:
   showNotification: true
 ```
 
-![Build error notifications](http://i.imgur.com/UN7hhJF.gif)
+![Build error notifications](http://i.imgur.com/BBQKfC4.gif)
 
 ### Babel aliases
 

@@ -3,6 +3,7 @@ const path = require('path');
 const loadUserConfig = require('../lib/config/loadUserConfig');
 const test = require('ava');
 const os = require('os');
+const assert = require('assert-diff')
 
 test('config : should parse config', () => {
   process.env['ENV_VAR'] = 'http://localhost:8181';
@@ -20,7 +21,8 @@ test('config : should parse config', () => {
   ]);
 
   expect(userConfig.proxies).toEqual([
-    {context: '/api', target: 'http://localhost:8080'}
+    {path: '/api', target: 'http://localhost:8080', ws: true, changeOrigin: true},
+    {path: '/complex/route', target: 'http://google.nl', ws: true, changeOrigin: true, prependPath: false}
   ]);
 
   expect(userConfig.define).toEqual({

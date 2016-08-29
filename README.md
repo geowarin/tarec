@@ -133,6 +133,23 @@ proxies:
 
 The above configuration will redirect every request made to `${yourServerUrl}/api` to `http://localhost:8080/api`
 
+This enables websocket support and add the host to the origin headers.
+See [the options](https://github.com/chimurai/http-proxy-middleware#http-proxy-options) of `http-proxy-middleware`
+which is used here.
+
+If the defaults are not good enough for you, you can override them:
+
+```yaml
+proxies:
+  - /api: http://localhost:8080
+  - path: /complex/route
+    target: http://google.nl
+    prependPath: false
+    ws: false
+    pathRewrite:
+      '^/old/path' : '/newPath'
+```
+
 ### Variable definitions
 
 In your build process, it can be useful to define variables that will be available

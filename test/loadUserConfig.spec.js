@@ -3,10 +3,8 @@ const path = require('path');
 const loadUserConfig = require('../lib/config/loadUserConfig');
 const test = require('ava');
 const os = require('os');
-const assert = require('assert-diff')
 
 test('config : should parse config', () => {
-  process.env['ENV_VAR'] = 'http://localhost:8181';
   const userConfig = loadUserConfig(path.resolve('fixtures/config/fullConfig.yml'));
 
   expect(userConfig.happypack).toEqual({
@@ -26,9 +24,28 @@ test('config : should parse config', () => {
   ]);
 
   expect(userConfig.define).toEqual({
-    'API_URL': '"http://localhost:8080"',
-    'API_URL2': '"http://localhost:9090"',
-    'API_URL3': '"http://localhost:8181"'
+    'API_URL': '"http://localhost:8080"'
+  });
+});
+
+test.only('config: should support environment variables everywhere', t => {
+  process.env['HAPPY'] = 'false';
+  process.env['API_URL'] = 'http://localhost:8080';
+
+  const userConfig = loadUserConfig(path.resolve('fixtures/config/envVars.yml'));
+
+  expect(userConfig.happypack).toEqual({
+    enabled: false,
+    cpus: 42,
+    cache: true
+  });
+
+  expect(userConfig.proxies).toEqual([
+    {path: '/defaultValue/', target: 'http://google.nl', ws: true, changeOrigin: true}
+  ]);
+
+  expect(userConfig.define).toEqual({
+    'API_URL': '"http://localhost:8080"'
   });
 });
 

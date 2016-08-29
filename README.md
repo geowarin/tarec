@@ -133,7 +133,7 @@ proxies:
 
 The above configuration will redirect every request made to `${yourServerUrl}/api` to `http://localhost:8080/api`
 
-This enables websocket support and add the host to the origin headers.
+This enables websocket support and adds the host to the origin headers.
 See [the options](https://github.com/chimurai/http-proxy-middleware#http-proxy-options) of `http-proxy-middleware`
 which is used here.
 
@@ -143,7 +143,7 @@ If the defaults are not good enough for you, you can override them:
 proxies:
   - /api: http://localhost:8080
   - path: /complex/route
-    target: http://google.nl
+    target: ${REDIRECT_TARGET:http://google.nl}
     prependPath: false
     ws: false
     pathRewrite:
@@ -166,14 +166,35 @@ define:
 In the above example, API_URL will be resolved as a string whose value is always
 `http://localhost:8080`.
 
-`API_URL2` will take its value from an environment variables
-called `ENV_VAR` if it is defined, and default to `http://localhost:9090`, otherwise.
-
 We can now use the variable directly in our application:
 
 ```javascript
 console.log(API_URL);
 ```
+
+`API_URL2` will take its value from an environment variables.
+See below.
+
+### Environment variables
+
+You can use environment variables anywhere in the configuration file.
+
+Syntax:
+
+```
+${MY_VARIABLE:defaultValue}
+```
+
+Example:
+
+```yaml
+define:
+  - PREFIX: ${API_URL:http://localhost:9090}
+```
+
+If the environment variable called `API_URL` is defined,
+`PREFIX` will take its value.
+Otherwise, the default value `http://localhost:9090` will be used.
 
 ### DLLs
 

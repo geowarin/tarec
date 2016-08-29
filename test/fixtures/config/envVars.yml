@@ -1,0 +1,10 @@
+happypack:
+  enabled: ${HAPPY}
+  cpus: ${THREADS:42}
+
+proxies:
+  - path: ${UNDEF:/defaultValue/}
+    target: http://google.nl
+
+define:
+  - API_URL: ${API_URL:http://localhost:8080}

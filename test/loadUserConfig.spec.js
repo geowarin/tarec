@@ -30,7 +30,6 @@ test('config : should parse config', () => {
 
 test('config: should support environment variables everywhere', t => {
   process.env['HAPPY'] = 'false';
-  process.env['API_URL'] = 'http://localhost:8080';
 
   const userConfig = loadUserConfig(path.resolve('fixtures/config/envVars.yml'));
 

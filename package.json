@@ -3,7 +3,8 @@
   "version": "1.4.1",
   "description": "The Awesome REact Cli",
   "scripts": {
-    "test": "nyc -r none -a ava",
+    "test": "ava",
+    "travis": "nyc -r none -a ava",
     "report": "nyc report",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs": "npm run docs:build",

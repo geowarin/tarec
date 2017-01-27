@@ -62,7 +62,7 @@
     "lodash.find": "4.6.0",
     "lodash.groupby": "4.6.0",
     "lodash.merge": "4.6.0",
-    "node-notifier": "4.6.1",
+    "node-notifier": "5.0.0",
     "open": "0.0.5",
     "react-transform-catch-errors": "1.0.2",
     "react-transform-hmr": "1.0.4",

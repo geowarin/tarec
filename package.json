@@ -57,7 +57,7 @@
     "happypack": "2.2.1",
     "html-webpack-plugin": "2.22.0",
     "http-proxy-middleware": "0.17.1",
-    "js-yaml": "3.6.1",
+    "js-yaml": "3.8.4",
     "json-loader": "0.5.4",
     "lodash.find": "4.6.0",
     "lodash.groupby": "4.6.0",

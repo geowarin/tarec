@@ -2,11 +2,18 @@
 
 # The Awesome REact CLI
 
+![Not maintained](https://img.shields.io/badge/maintained%3F-no!-red.svg?style=flat)
 [![npm](https://img.shields.io/npm/v/tarec.svg)](https://www.npmjs.com/package/tarec)
 [![Build Status](https://travis-ci.org/geowarin/tarec.svg?branch=master)](https://travis-ci.org/geowarin/tarec)
 [![Coverage Status](https://coveralls.io/repos/github/geowarin/tarec/badge.svg?branch=master)](https://coveralls.io/github/geowarin/tarec?branch=master)
 
 Tarec takes care of your React build for you. No more googling and stitching boilerplates together. Just write your application.
+
+# NO LONGER MAINTAINED
+
+I recommend using [create-react-app](https://github.com/facebookincubator/create-react-app) or [nwb](https://github.com/insin/nwb) instead.
+
+If you like this project and whish to take over, ping me on [twitter](https://twitter.com/geowarin).
 
 ## Features
 
